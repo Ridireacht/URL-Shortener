@@ -10,4 +10,15 @@ import org.springframework.stereotype.Service;
 public class UrlMappingServiceImpl implements UrlMappingService {
 
     private final UrlMappingRepository urlMappingRepository;
+
+
+    @Override
+    public String saveUrl(String url) {
+        return null;
+    }
+
+    @Override
+    public String findUrlByHash(String hash) {
+        return null;
+    }
 }
