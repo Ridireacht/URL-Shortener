@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UrlMappingRepository extends JpaRepository<UrlMapping, String> {
+
+    UrlMapping findByUrl(String url);
 }

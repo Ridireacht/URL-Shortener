@@ -17,6 +17,6 @@ public class UrlMapping {
     @Column(name = "hash", unique = true, nullable = false)
     private String hash;
 
-    @Column(name = "original_url", nullable = false)
-    private String originalUrl;
+    @Column(name = "url", unique = true, nullable = false)
+    private String url;
 }
