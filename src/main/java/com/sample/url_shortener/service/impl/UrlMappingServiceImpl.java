@@ -15,20 +15,26 @@ public class UrlMappingServiceImpl implements UrlMappingService {
 
     @Override
     public String saveUrl(String url) {
-        UrlMapping urlMapping = new UrlMapping();
-        urlMapping.setOriginalUrl(url);
+        String hash = findHashByUrl(url);
 
-        String hash = "";
-        urlMapping.setHash(hash);
-
-        urlMappingRepository.save(urlMapping);
+        if (hash == null) {
+            hash = "someHashHere";
+            urlMappingRepository.save(new UrlMapping(hash, url));
+        }
 
         return hash;
     }
 
     @Override
     public String findUrlByHash(String hash) {
-        var dbRecord = urlMappingRepository.findById(hash);
-        return dbRecord.map(UrlMapping::getOriginalUrl).orElse(null);
+        return urlMappingRepository.findById(hash)
+                .map(UrlMapping::getUrl)
+                .orElse(null);
+    }
+
+    private String findHashByUrl(String url) {
+        return urlMappingRepository.findByUrl(url)
+                .map(UrlMapping::getHash)
+                .orElse(null);
     }
 }
