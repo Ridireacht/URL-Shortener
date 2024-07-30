@@ -1,8 +1,8 @@
 ## General Info
 
-A small project with 2 simple functions:
-- Turn original URLs to short, hash-based URLs. Uses Base62 encoding (original URL --> SHA256 --> Base62).
-- Redirect user to original URL from hash-based URL.
+A small project with simple functions:
+1. Turn original URLs to short, hash-based URLs. Uses Base62 encoding (original URL --> SHA256 --> Base62).
+2. Redirect user to original URL from hash-based URL.
 
 If the URL was once shortened, get it from DBs instead of generating again. Popular URLs get cached in Redis, so we check here before looking at PostgreSQL DB (the main one).
 
