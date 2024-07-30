@@ -1,2 +1,2 @@
-# URL-Shortener
-A service to shorten URLs
+# URL Shortener
+Lorem ipsum dolor sit amet
