@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+
 @RestController
 @RequiredArgsConstructor
 public class UrlMappingController {
@@ -17,10 +21,19 @@ public class UrlMappingController {
 
     @PostMapping("/")
     public ResponseEntity<String> saveUrl(@RequestBody SaveRequestDTO saveRequestDTO) {
-        if (SaveRequestDTO.isURL(saveRequestDTO.getUrl())) {
+        if (isURL(saveRequestDTO.getUrl())) {
             return ResponseEntity.badRequest().body("Invalid URL format");
         }
 
         return ResponseEntity.ok().body(urlMappingService.saveUrl(saveRequestDTO.getUrl()));
+    }
+
+    private static boolean isURL(String input) {
+        try {
+            new URL(input).toURI();
+            return true;
+        } catch (MalformedURLException | URISyntaxException e) {
+            return false;
+        }
     }
 }
