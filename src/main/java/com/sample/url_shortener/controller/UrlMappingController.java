@@ -2,7 +2,6 @@ package com.sample.url_shortener.controller;
 
 import com.sample.url_shortener.dto.SaveRequestDTO;
 import com.sample.url_shortener.service.UrlMappingService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +16,11 @@ public class UrlMappingController {
 
 
     @PostMapping("/")
-    public ResponseEntity<String> saveUrl(@RequestBody @Valid SaveRequestDTO hash) {
-        return ResponseEntity.ok().body(urlMappingService.saveUrl(hash.getUrl()));
+    public ResponseEntity<String> saveUrl(@RequestBody SaveRequestDTO saveRequestDTO) {
+        if (SaveRequestDTO.isURL(saveRequestDTO.getUrl())) {
+            return ResponseEntity.badRequest().body("Invalid URL format");
+        }
+
+        return ResponseEntity.ok().body(urlMappingService.saveUrl(saveRequestDTO.getUrl()));
     }
 }
