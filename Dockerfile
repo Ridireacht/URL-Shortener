@@ -1,4 +1,4 @@
-# Building stage
+# Build stage
 FROM maven:3-openjdk-17-slim AS build
 WORKDIR /app
 COPY pom.xml .
