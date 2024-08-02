@@ -20,6 +20,7 @@ public class UrlMapping {
     @Column(name = "url", unique = true, nullable = false)
     private String url;
 
+    public UrlMapping() {}
 
     public UrlMapping(String hash, String url) {
         this.hash = hash;
