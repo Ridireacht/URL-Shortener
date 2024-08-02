@@ -21,11 +21,11 @@ public class UrlMappingController {
 
     @PostMapping("/")
     public ResponseEntity<String> saveUrl(@RequestBody SaveRequestDTO saveRequestDTO) {
-        if (isURL(saveRequestDTO.getUrl())) {
+        if (!isURL(saveRequestDTO.getUrl())) {
             return ResponseEntity.badRequest().body("Invalid URL format");
         }
 
-        return ResponseEntity.ok().body("https://localhost:8080/" + urlMappingService.saveUrl(saveRequestDTO.getUrl()));
+        return ResponseEntity.ok().body("localhost:8080/" + urlMappingService.saveUrl(saveRequestDTO.getUrl()));
     }
 
     private static boolean isURL(String input) {
