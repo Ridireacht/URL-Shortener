@@ -37,6 +37,7 @@ services:
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: password
       SPRING_REDIS_HOST: redis
+      APP_DOMAIN: localhost:8082
     ports:
       - "8080:8080"
     networks:
