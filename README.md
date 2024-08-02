@@ -10,6 +10,8 @@ If the URL was once shortened, get it from DBs instead of generating again. Popu
 
 Clone this repository, enter a directory and execute ```docker compose up``` console command there. This will create and setup all Docker containers. Then locate to ```localhost:8080``` webpage, where lies a home page of the project.
 
+In case changes were applied to the project, execute ```docker compose build``` to rebuild it and then ```docker compose up``` to run.
+
 ## Technologies used
 
 ### Programming languages
