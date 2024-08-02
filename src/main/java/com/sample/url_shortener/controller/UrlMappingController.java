@@ -25,7 +25,10 @@ public class UrlMappingController {
             return ResponseEntity.badRequest().body("Invalid URL format");
         }
 
-        return ResponseEntity.ok().body("localhost:8080/" + urlMappingService.saveUrl(saveRequestDTO.getUrl()));
+        // Remove all unnecessary '/' at the end
+        String url = saveRequestDTO.getUrl().replaceAll("/+$", "");
+
+        return ResponseEntity.ok().body("localhost:8080/" + urlMappingService.saveUrl(url));
     }
 
     private static boolean isURL(String input) {
