@@ -16,9 +16,10 @@ Clone this repository, enter a directory and execute ```docker compose up``` con
 - Java **17**
 
 ### Frameworks
-- Spring Boot  (version **3.3.2**)
+- Spring Boot (version **3.3.2**)
   - Spring Boot Starter Web
   - Spring Boot Starter Test
+  - Spring Boot Starter Thymeleaf
   - Spring Boot Starter Data JPA
   - Spring Boot Starter Data Redis
  
