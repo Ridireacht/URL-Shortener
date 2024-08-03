@@ -4,7 +4,7 @@ A small project with simple functions:
 1. Turn original URLs to short, hash-based URLs. Uses Base62 encoding (original URL --> SHA256 --> Base62).
 2. Redirect user to original URL from hash-based URL.
 
-If the URL was once shortened, get it from DBs instead of generating again. Popular URLs get cached in Redis, so we check here before looking at PostgreSQL DB (the main one).
+If the URL was once shortened, get it from DB instead of generating again. URLs get cached.
 
 ## How to deploy
 
@@ -21,9 +21,9 @@ In case changes were applied to the project, execute ```docker compose build``` 
 - Spring Boot (version **3.3.2**)
   - Spring Boot Starter Web
   - Spring Boot Starter Test
-  - Spring Boot Starter Thymeleaf
+  - Spring Boot Starter Cache
   - Spring Boot Starter Data JPA
-  - Spring Boot Starter Data Redis
+  - Spring Boot Starter Thymeleaf
  
 ### Additional libraries
 - PostgreSQL Driver
