@@ -5,6 +5,7 @@ import com.sample.url_shortener.repository.UrlMappingRepository;
 import com.sample.url_shortener.service.UrlMappingService;
 import com.sample.url_shortener.util.HashUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,12 +28,14 @@ public class UrlMappingServiceImpl implements UrlMappingService {
     }
 
     @Override
+    @Cacheable("urls")
     public String findUrlByHash(String hash) {
         return urlMappingRepository.findById(hash)
                 .map(UrlMapping::getUrl)
                 .orElse(null);
     }
 
+    @Cacheable("hashes")
     private String findHashByUrl(String url) {
         return urlMappingRepository.findByUrl(url)
                 .map(UrlMapping::getHash)
