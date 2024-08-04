@@ -4,7 +4,7 @@ A small project with simple functions:
 1. Turn original URLs to short, hash-based URLs. Uses Base62 encoding (original URL --> SHA256 --> Base62).
 2. Redirect user to original URL from hash-based URL.
 
-If the URL was once shortened, get it from DB instead of generating again. URLs get cached.
+If the URL was once shortened, get it from DB instead of generating again. URLs and hashes get cached with Caffeine.
 
 ## How to deploy
 
@@ -28,4 +28,5 @@ In case changes were applied to the project, execute ```docker compose build``` 
 ### Additional libraries
 - PostgreSQL Driver
 - Lombok
+- Caffeine
 
