@@ -2,10 +2,10 @@ package com.sample.url_shortener.service.impl;
 
 import com.sample.url_shortener.entity.UrlMapping;
 import com.sample.url_shortener.repository.UrlMappingRepository;
+import com.sample.url_shortener.service.DatabaseLookupService;
 import com.sample.url_shortener.service.UrlMappingService;
 import com.sample.url_shortener.util.HashUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,11 +13,12 @@ import org.springframework.stereotype.Service;
 public class UrlMappingServiceImpl implements UrlMappingService {
 
     private final UrlMappingRepository urlMappingRepository;
+    private final DatabaseLookupService databaseLookupService;
 
 
     @Override
     public String saveUrl(String url) {
-        String hash = findHashByUrl(url);
+        String hash = databaseLookupService.findHashByUrl(url);
 
         if (hash == null) {
             hash = HashUtil.generateHashForUrl(url);
@@ -25,20 +26,5 @@ public class UrlMappingServiceImpl implements UrlMappingService {
         }
 
         return hash;
-    }
-
-    @Override
-    @Cacheable("urls")
-    public String findUrlByHash(String hash) {
-        return urlMappingRepository.findById(hash)
-                .map(UrlMapping::getUrl)
-                .orElse(null);
-    }
-
-    @Cacheable("hashes")
-    private String findHashByUrl(String url) {
-        return urlMappingRepository.findByUrl(url)
-                .map(UrlMapping::getHash)
-                .orElse(null);
     }
 }

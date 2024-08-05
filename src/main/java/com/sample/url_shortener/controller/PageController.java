@@ -1,6 +1,6 @@
 package com.sample.url_shortener.controller;
 
-import com.sample.url_shortener.service.UrlMappingService;
+import com.sample.url_shortener.service.DatabaseLookupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequiredArgsConstructor
 public class PageController {
 
-    private final UrlMappingService urlMappingService;
+    private final DatabaseLookupService databaseLookupService;
 
 
     @GetMapping("/")
@@ -20,7 +20,7 @@ public class PageController {
 
     @GetMapping("/r/{hashUrl}")
     public String getRedirect(@PathVariable String hashUrl) {
-        String url = urlMappingService.findUrlByHash(hashUrl);
+        String url = databaseLookupService.findUrlByHash(hashUrl);
 
         if (url != null) {
             return "redirect:" + url;
