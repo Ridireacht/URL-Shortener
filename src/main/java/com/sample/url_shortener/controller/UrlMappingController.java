@@ -17,10 +17,10 @@ import java.net.URL;
 @RequiredArgsConstructor
 public class UrlMappingController {
 
-    private final UrlMappingService urlMappingService;
-
     @Value("${APP_DOMAIN}")
     private String appDomain;
+
+    private final UrlMappingService urlMappingService;
 
 
     @PostMapping("/")
@@ -35,6 +35,7 @@ public class UrlMappingController {
         return ResponseEntity.ok().body(appDomain + "/r/" + urlMappingService.saveUrl(url));
     }
 
+    
     private static boolean isURL(String input) {
         try {
             new URL(input).toURI();
