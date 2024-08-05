@@ -32,7 +32,7 @@ public class UrlMappingController {
         // Remove all unnecessary '/' at the end
         String url = saveRequestDTO.getUrl().replaceAll("/+$", "");
 
-        return ResponseEntity.ok().body(appDomain + "/" + urlMappingService.saveUrl(url));
+        return ResponseEntity.ok().body(appDomain + "/r/" + urlMappingService.saveUrl(url));
     }
 
     private static boolean isURL(String input) {
