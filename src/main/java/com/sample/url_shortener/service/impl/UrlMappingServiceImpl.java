@@ -22,20 +22,11 @@ public class UrlMappingServiceImpl implements UrlMappingService {
         String key = databaseLookupService.findKeyByUrl(url);
 
         if (key == null) {
-            boolean isSaved = false;
-            UrlMapping urlMapping = new UrlMapping(null, url);
-
-            while (!isSaved) {
+            do {
                 key = RandomStringGenerator.generateRandomString(6);
-                urlMapping.setKey(key);
+            } while (urlMappingRepository.existsById(key));
 
-                try {
-                    urlMappingRepository.save(urlMapping);
-                    isSaved = true;
-                } catch (DataIntegrityViolationException ignored) {
-
-                }
-            }
+            urlMappingRepository.save(new UrlMapping(key, url));
         }
 
         return key;
