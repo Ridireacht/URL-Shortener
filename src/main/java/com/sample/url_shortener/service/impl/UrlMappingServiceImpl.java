@@ -18,7 +18,7 @@ public class UrlMappingServiceImpl implements UrlMappingService {
 
     @Override
     public String saveUrl(String url) {
-        String hash = databaseLookupService.findHashByUrl(url);
+        String hash = databaseLookupService.findKeyByUrl(url);
 
         if (hash == null) {
             hash = HashUtil.generateHashForUrl(url);

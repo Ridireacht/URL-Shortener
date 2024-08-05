@@ -4,26 +4,23 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
 @Table(name="url_mappings")
+@NoArgsConstructor
+@AllArgsConstructor
 public class UrlMapping {
 
     @Id
-    @Column(name = "hash", unique = true, nullable = false)
-    private String hash;
+    @Column(unique = true, nullable = false)
+    private String key;
 
-    @Column(name = "url", unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     private String url;
-
-    public UrlMapping() {}
-
-    public UrlMapping(String hash, String url) {
-        this.hash = hash;
-        this.url = url;
-    }
 }

@@ -2,7 +2,7 @@ package com.sample.url_shortener.service;
 
 public interface DatabaseLookupService {
 
-    String findUrlByHash(String hash);
+    String findUrlByKey(String hash);
 
-    String findHashByUrl(String url);
+    String findKeyByUrl(String url);
 }

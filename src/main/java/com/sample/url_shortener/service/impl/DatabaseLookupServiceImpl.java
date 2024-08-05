@@ -16,19 +16,19 @@ public class DatabaseLookupServiceImpl implements DatabaseLookupService {
 
     @Override
     @Cacheable("urls")
-    public String findUrlByHash(String hash) {
-        System.out.println("Looking for URL by hash");
-        return urlMappingRepository.findById(hash)
+    public String findUrlByKey(String key) {
+        System.out.println("Looking for URL by key");
+        return urlMappingRepository.findById(key)
                 .map(UrlMapping::getUrl)
                 .orElse(null);
     }
 
     @Override
-    @Cacheable("hashes")
-    public String findHashByUrl(String url) {
-        System.out.println("Looking for hash by URL");
+    @Cacheable("keys")
+    public String findKeyByUrl(String url) {
+        System.out.println("Looking for key by URL");
         return urlMappingRepository.findByUrl(url)
-                .map(UrlMapping::getHash)
+                .map(UrlMapping::getKey)
                 .orElse(null);
     }
 }

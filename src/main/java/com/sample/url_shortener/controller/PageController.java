@@ -18,9 +18,9 @@ public class PageController {
         return "home";
     }
 
-    @GetMapping("/r/{hashUrl}")
-    public String getRedirect(@PathVariable String hashUrl) {
-        String url = databaseLookupService.findUrlByHash(hashUrl);
+    @GetMapping("/r/{keyUrl}")
+    public String getRedirect(@PathVariable String keyUrl) {
+        String url = databaseLookupService.findUrlByKey(keyUrl);
 
         if (url != null) {
             return "redirect:" + url;
