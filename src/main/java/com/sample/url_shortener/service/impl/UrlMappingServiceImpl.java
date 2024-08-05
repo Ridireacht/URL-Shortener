@@ -6,6 +6,7 @@ import com.sample.url_shortener.service.DatabaseLookupService;
 import com.sample.url_shortener.service.UrlMappingService;
 import com.sample.url_shortener.util.RandomStringGenerator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,8 +22,20 @@ public class UrlMappingServiceImpl implements UrlMappingService {
         String key = databaseLookupService.findKeyByUrl(url);
 
         if (key == null) {
-            key = RandomStringGenerator.generateRandomString(6);
-            urlMappingRepository.save(new UrlMapping(key, url));
+            boolean isSaved = false;
+            UrlMapping urlMapping = new UrlMapping(null, url);
+
+            while (!isSaved) {
+                key = RandomStringGenerator.generateRandomString(6);
+                urlMapping.setKey(key);
+
+                try {
+                    urlMappingRepository.save(urlMapping);
+                    isSaved = true;
+                } catch (DataIntegrityViolationException ignored) {
+
+                }
+            }
         }
 
         return key;
