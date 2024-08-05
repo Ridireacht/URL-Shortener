@@ -4,7 +4,7 @@ import com.sample.url_shortener.entity.UrlMapping;
 import com.sample.url_shortener.repository.UrlMappingRepository;
 import com.sample.url_shortener.service.DatabaseLookupService;
 import com.sample.url_shortener.service.UrlMappingService;
-import com.sample.url_shortener.util.HashUtil;
+import com.sample.url_shortener.util.RandomStringGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +18,13 @@ public class UrlMappingServiceImpl implements UrlMappingService {
 
     @Override
     public String saveUrl(String url) {
-        String hash = databaseLookupService.findKeyByUrl(url);
+        String key = databaseLookupService.findKeyByUrl(url);
 
-        if (hash == null) {
-            hash = HashUtil.generateHashForUrl(url);
-            urlMappingRepository.save(new UrlMapping(hash, url));
+        if (key == null) {
+            key = RandomStringGenerator.generateRandomString(6);
+            urlMappingRepository.save(new UrlMapping(key, url));
         }
 
-        return hash;
+        return key;
     }
 }
