@@ -24,7 +24,7 @@ public class DatabaseLookupServiceImpl implements DatabaseLookupService {
     }
 
     @Override
-    @Cacheable("keys")
+    @Cacheable(value = "keys", unless = "#result == null")
     public String findKeyByUrl(String url) {
         System.out.println("Looking for key by URL");
         return urlMappingRepository.findByUrl(url)
