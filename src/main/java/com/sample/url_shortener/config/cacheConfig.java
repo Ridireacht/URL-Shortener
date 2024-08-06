@@ -22,6 +22,6 @@ public class cacheConfig {
     Caffeine<Object, Object> caffeineCacheBuilder() {
         return Caffeine.newBuilder()
                 .expireAfterAccess(10, TimeUnit.MINUTES)
-                .maximumSize(500);
+                .maximumSize(5000);
     }
 }
