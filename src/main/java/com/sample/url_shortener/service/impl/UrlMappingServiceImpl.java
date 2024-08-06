@@ -6,7 +6,6 @@ import com.sample.url_shortener.service.DatabaseLookupService;
 import com.sample.url_shortener.service.UrlMappingService;
 import com.sample.url_shortener.util.RandomStringGenerator;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service
