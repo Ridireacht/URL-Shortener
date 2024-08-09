@@ -28,4 +28,9 @@ public class PageController {
             return "404";
         }
     }
+
+    @GetMapping("/error")
+    public String getError() {
+        return "404";
+    }
 }
