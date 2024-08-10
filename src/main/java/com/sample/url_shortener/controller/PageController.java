@@ -25,12 +25,7 @@ public class PageController {
         if (url != null) {
             return "redirect:" + url;
         } else {
-            return "404";
+            return "error";
         }
-    }
-
-    @GetMapping("/error")
-    public String getError() {
-        return "404";
     }
 }
