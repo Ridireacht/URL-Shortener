@@ -25,7 +25,7 @@ public class PageController {
         if (url != null) {
             return "redirect:" + url;
         } else {
-            return "error";
+            return "error/404";
         }
     }
 }
