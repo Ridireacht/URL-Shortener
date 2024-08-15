@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const shortenButton = document.getElementById('shortenButton');
     const urlInput = document.getElementById('urlInput');
     const urlOutput = document.getElementById('urlOutput');
+    const copyButton = document.getElementById('copyButton');
 
     shortenButton.addEventListener('click', function () {
         const url = urlInput.value.trim();
@@ -30,5 +31,11 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error:', error);
             alert('An error occurred. Please try again later.');
         });
+    });
+
+    copyButton.addEventListener('click', function () {
+        urlOutput.select();
+        document.execCommand('copy');
+        alert('URL copied to clipboard!');
     });
 });
