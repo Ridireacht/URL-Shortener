@@ -24,7 +24,7 @@ In case changes were applied to the project, execute ```docker compose build``` 
   - Spring Boot Starter Cache
   - Spring Boot Starter Data JPA
   - Spring Boot Starter Thymeleaf
-- Bootstrap **5.0**
+- Bootstrap **5.3**
  
 ### Additional libraries
 - PostgreSQL Driver
