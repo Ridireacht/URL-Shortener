@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const url = urlInput.value.trim();
 
         if (!url) {
-            showAlert('Please enter a URL', 'warning');
+            showAlert('No URL specified. Enter a URL first', 'warning');
             return;
         }
 
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => {
             console.error('Error:', error);
-            showAlert('An error occurred. Please try again later.', 'danger');
+            showAlert('An error occurred. Try again later', 'danger');
             urlOutput.value = '';
         });
     });
