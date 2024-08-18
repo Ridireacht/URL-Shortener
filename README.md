@@ -8,9 +8,9 @@ If the URL was once shortened, get it from DB instead of generating again. URLs 
 
 ## How to deploy
 
-Clone this repository, enter a directory and execute ```docker compose up``` console command there. This will create and setup all Docker containers. Then locate to ```localhost:8080``` webpage, where lies a home page of the project.
+Clone this repository, enter a directory and execute ```docker compose up``` console command. This will build and setup all Docker containers necessary for this application to run. After that you can start using it: go to the ```localhost:8080``` link in your browser, where the main page is located.
 
-In case changes were applied to the project, execute ```docker compose build``` to rebuild it and then ```docker compose up``` to run.
+In case any changes were applied to the project, execute ```docker compose build``` to rebuild it and then ```docker compose up``` to run it again.
 
 ## Technologies used
 
