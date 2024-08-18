@@ -12,7 +12,7 @@ Clone this repository, enter a directory and execute ```docker compose up``` con
 
 In case any changes were applied to the project, execute ```docker compose build``` to rebuild it and then ```docker compose up``` to run it again.
 
-In case there's no need for this app anymore, execute ```docker compose down -v``` to remove its containers and volumes.
+If there is no need for this app anymore, execute ```docker compose down -v``` to remove its containers and volumes.
 
 ## Technologies used
 
