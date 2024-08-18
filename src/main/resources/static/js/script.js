@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function showAlert(message, type) {
         const alert = document.createElement('div');
 
-        alert.className = `alert alert-${type} alert-dismissible fade show`;
+        alert.className = `alert alert-${type} alert-dismissible fade show p-3`;
         alert.role = 'alert';
         alert.innerHTML = message;
 
