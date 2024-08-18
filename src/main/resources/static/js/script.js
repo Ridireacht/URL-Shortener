@@ -3,12 +3,30 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlInput = document.getElementById('urlInput');
     const urlOutput = document.getElementById('urlOutput');
     const copyButton = document.getElementById('copyButton');
+    const alertContainer = document.getElementById('alertContainer');
+
+
+    function showAlert(message, type) {
+        const alert = document.createElement('div');
+
+        alert.className = `alert alert-${type} alert-dismissible fade show`;
+        alert.role = 'alert';
+        alert.innerHTML = message;
+
+        alertContainer.appendChild(alert);
+
+        setTimeout(() => {
+            alert.classList.remove('show');
+            alert.addEventListener('transitionend', () => alert.remove());
+        }, 3000);
+    }
+
 
     shortenButton.addEventListener('click', function () {
         const url = urlInput.value.trim();
 
         if (!url) {
-            alert('Please enter a URL.');
+            showAlert('Please enter a URL', 'warning');
             return;
         }
 
@@ -22,20 +40,21 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.text())
         .then(data => {
             if (data.startsWith('Invalid URL format')) {
-                alert(data);
+                showAlert(data, 'danger');
             } else {
                 urlOutput.value = data;
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('An error occurred. Please try again later.');
+            showAlert('An error occurred. Please try again later.', 'danger');
         });
     });
+
 
     copyButton.addEventListener('click', function () {
         urlOutput.select();
         document.execCommand('copy');
-        alert('URL copied to clipboard!');
+        showAlert('URL copied to clipboard!', 'success');
     });
 });
