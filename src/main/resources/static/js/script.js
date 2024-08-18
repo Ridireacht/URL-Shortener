@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             if (data.startsWith('Invalid URL format')) {
                 showAlert(data, 'danger');
+                urlOutput.value = '';
             } else {
                 urlOutput.value = data;
             }
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
             console.error('Error:', error);
             showAlert('An error occurred. Please try again later.', 'danger');
+            urlOutput.value = '';
         });
     });
 
