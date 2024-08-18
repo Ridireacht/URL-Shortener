@@ -55,6 +55,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     copyButton.addEventListener('click', function () {
+        if (urlOutput.value.trim() === '') {
+            showAlert('There is no URL to copy. Shorten a URL first', 'warning');
+            return;
+        }
+        
         urlOutput.select();
         document.execCommand('copy');
         showAlert('URL copied to clipboard!', 'success');
