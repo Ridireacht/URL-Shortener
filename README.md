@@ -4,7 +4,7 @@ A small project with simple functions:
 1. Turn original URLs to short, hash-based URLs. This is done via Base62 encoding (original URL --> SHA256 --> Base62).
 2. Redirect user to original URL with hash-based URL.
 
-If the URL was once shortened, the application retrieves it from DB instead of generating again. URL-hash pairs also get temporarily cached with Caffeine, so we check cache inbefore as well.
+If the URL was once shortened, the application retrieves it from DB instead of generating again. URL-hash pairs also get temporarily cached with Caffeine, so we check cache as well.
 
 ## How to deploy
 
