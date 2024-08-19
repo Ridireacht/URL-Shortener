@@ -6,7 +6,7 @@ A small project with simple functions:
 
 If the URL was once shortened, the application retrieves it from DB instead of generating again. URL-hash pairs also get temporarily cached with Caffeine, so we check cache as well.
 
-## How to deploy
+## Installation & usage
 
 Clone this repository, enter a directory and execute ```docker compose up``` console command. This will build and setup all Docker containers necessary for this application to run. After that you can start using it: go to the ```localhost:8080``` link in your browser, where the main page is located.
 
