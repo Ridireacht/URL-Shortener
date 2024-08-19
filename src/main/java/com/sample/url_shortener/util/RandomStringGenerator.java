@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 
 public class RandomStringGenerator {
 
-    private static final String BASE62_ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    private static final String BASE62_ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyz";
     private static final SecureRandom secureRandom = new SecureRandom();
 
 
