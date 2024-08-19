@@ -32,6 +32,10 @@ public class UrlMappingController {
         // Remove all unnecessary '/' at the end
         String url = saveRequestDTO.getUrl().replaceAll("/+$", "");
 
+        if (url.length() > 1000) {
+            return ResponseEntity.badRequest().body("URL too long (1000 characters at max)");
+        }
+
         return ResponseEntity.ok().body(appDomain + "/r/" + urlMappingService.saveUrl(url));
     }
 

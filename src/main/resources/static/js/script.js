@@ -37,12 +37,20 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify({ url: url })
         })
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(errorMessage => {
+                    showAlert(errorMessage, 'danger');
+                    urlOutput.value = '';
+                });
+            }
+
+            else {
+                return response.text();
+            }
+        })
         .then(data => {
-            if (data.startsWith('Invalid URL format')) {
-                showAlert(data, 'danger');
-                urlOutput.value = '';
-            } else {
+            if (data) {
                 urlOutput.value = data;
             }
         })
