@@ -11,10 +11,10 @@ import org.springframework.cache.CacheManager;
 
 @SpringBootTest
 @Transactional
-public class DatabaseLookupServiceTests {
+public class UrlMappingServiceTests {
 
     @Autowired
-    private DatabaseLookupService databaseLookupService;
+    private UrlMappingService urlMappingService;
     @Autowired
     private UrlMappingRepository urlMappingRepository;
     @Autowired
@@ -28,42 +28,24 @@ public class DatabaseLookupServiceTests {
 
 
     @Test
-    void findUrlByHash_Found() {
-        String hash = "aK3x5";
+    void saveUrl_NewUrl() {
         String url = "https://example.com";
 
-        urlMappingRepository.save(new UrlMapping(hash, url));
+        String hash = urlMappingService.saveUrl(url);
 
-        assert(databaseLookupService.findUrlByHash(hash).equals(url));
+        var queryResult = urlMappingRepository.findByUrl(url);
+
+        assert(queryResult.isPresent());
+        assert(queryResult.get().getHash().equals(hash));
     }
 
     @Test
-    void findUrlByHash_NotFound() {
+    void saveUrl_ExistingUrl() {
         String hash = "aK3x5";
         String url = "https://example.com";
 
         urlMappingRepository.save(new UrlMapping(hash, url));
 
-        assert(databaseLookupService.findUrlByHash("abc1d") == null);
-    }
-
-    @Test
-    void findHashByUrl_Found() {
-        String hash = "aK3x5";
-        String url = "https://example.com";
-
-        urlMappingRepository.save(new UrlMapping(hash, url));
-
-        assert(databaseLookupService.findHashByUrl(url).equals(hash));
-    }
-
-    @Test
-    void findHashByUrl_NotFound() {
-        String hash = "aK3x5";
-        String url = "https://example.com";
-
-        urlMappingRepository.save(new UrlMapping(hash, url));
-
-        assert(databaseLookupService.findHashByUrl("https://notexample.com") == null);
+        assert(urlMappingService.saveUrl(url).equals(hash));
     }
 }
