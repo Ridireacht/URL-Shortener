@@ -18,16 +18,16 @@ public class UrlMappingServiceImpl implements UrlMappingService {
 
     @Override
     public String saveUrl(String url) {
-        String key = databaseLookupService.findKeyByUrl(url);
+        String hash = databaseLookupService.findHashByUrl(url);
 
-        if (key == null) {
+        if (hash == null) {
             do {
-                key = RandomStringGenerator.generateRandomString(6);
-            } while (urlMappingRepository.existsById(key));
+                hash = RandomStringGenerator.generateRandomString(6);
+            } while (urlMappingRepository.existsById(hash));
 
-            urlMappingRepository.save(new UrlMapping(key, url));
+            urlMappingRepository.save(new UrlMapping(hash, url));
         }
 
-        return key;
+        return hash;
     }
 }

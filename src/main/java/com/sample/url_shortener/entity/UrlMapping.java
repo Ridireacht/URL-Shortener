@@ -19,7 +19,7 @@ public class UrlMapping {
 
     @Id
     @Column(unique = true, nullable = false)
-    private String key;
+    private String hash;
 
     @Column(unique = true, nullable = false)
     private String url;
