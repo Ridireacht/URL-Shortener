@@ -18,32 +18,42 @@ public class DatabaseLookupServiceTests {
 
 
     @Test
-    void findUrlByKey_Found() {
+    void findUrlByHash_Found() {
+        String hash = "aK3x5";
+        String url = "https://example.com";
 
+        urlMappingRepository.save(new UrlMapping(hash, url));
+
+        assert(databaseLookupService.findUrlByHash(hash).equals(url));
     }
 
     @Test
-    void findUrlByKey_NotFound() {
+    void findUrlByHash_NotFound() {
+        String hash = "aK3x5";
+        String url = "https://example.com";
 
+        urlMappingRepository.save(new UrlMapping(hash, url));
+
+        assert(databaseLookupService.findUrlByHash("abc1d") == null);
     }
 
     @Test
-    void findUrlByKey_Caching() {
+    void findHashByUrl_Found() {
+        String hash = "aK3x5";
+        String url = "https://example.com";
 
+        urlMappingRepository.save(new UrlMapping(hash, url));
+
+        assert(databaseLookupService.findHashByUrl(url).equals(hash));
     }
 
     @Test
-    void findKeyByUrl_Found() {
+    void findHashByUrl_NotFound() {
+        String hash = "aK3x5";
+        String url = "https://example.com";
 
-    }
+        urlMappingRepository.save(new UrlMapping(hash, url));
 
-    @Test
-    void findKeyByUrl_NotFound() {
-
-    }
-
-    @Test
-    void findKeyByUrl_Caching() {
-
+        assert(databaseLookupService.findHashByUrl("https://notexample.com") == null);
     }
 }
