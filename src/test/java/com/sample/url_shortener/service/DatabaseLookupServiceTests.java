@@ -48,6 +48,27 @@ public class DatabaseLookupServiceTests {
     }
 
     @Test
+    void findUrlByHash_Cacheable() {
+        String hash = "aK3x5";
+        String oldUrl = "https://example.com";
+        String newUrl = "https://sample.com";
+
+        urlMappingRepository.save(new UrlMapping(hash, oldUrl));
+
+
+        // Create supposed cache
+        databaseLookupService.findUrlByHash(hash);
+
+        // Replace UrlMapping with a different one
+        urlMappingRepository.deleteById(hash);
+        urlMappingRepository.save(new UrlMapping(hash, newUrl));
+
+        // Get result and compare
+        String returnedUrl = databaseLookupService.findUrlByHash(hash);
+        assert(returnedUrl.equals(oldUrl));
+    }
+
+    @Test
     void findHashByUrl_Found() {
         String hash = "aK3x5";
         String url = "https://example.com";
@@ -65,5 +86,26 @@ public class DatabaseLookupServiceTests {
         urlMappingRepository.save(new UrlMapping(hash, url));
 
         assert(databaseLookupService.findHashByUrl("https://notexample.com") == null);
+    }
+
+    @Test
+    void findHashByUrl_Cacheable() {
+        String oldHash = "aK3x5";
+        String newHash = "abc1d";
+        String url = "https://example.com";
+
+        urlMappingRepository.save(new UrlMapping(oldHash, url));
+
+
+        // Create supposed cache
+        databaseLookupService.findHashByUrl(url);
+
+        // Replace UrlMapping with a different one
+        urlMappingRepository.deleteById(oldHash);
+        urlMappingRepository.save(new UrlMapping(newHash, url));
+
+        // Get result and compare
+        String returnedHash = databaseLookupService.findHashByUrl(url);
+        assert(returnedHash.equals(oldHash));
     }
 }
