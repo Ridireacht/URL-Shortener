@@ -25,7 +25,8 @@ If there is no need for this app anymore, execute ```docker compose down -v``` t
 - Bootstrap **5.3**
  
 ### Additional libraries
-- PostgreSQL Driver
+- PostgreSQL Driver (main DB)
+- H2 Driver (test DB)
 - Lombok
 - Caffeine
 
