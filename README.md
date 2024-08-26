@@ -29,4 +29,4 @@ If there is no need for this app anymore, execute ```docker compose down -v``` t
 - H2 Driver (test DB)
 - Lombok
 - Caffeine
-
+- [QR Code generator](https://github.com/nayuki/QR-Code-generator)
