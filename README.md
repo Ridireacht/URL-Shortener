@@ -1,6 +1,6 @@
 ## General Info
 
-A small project with simple functions. URLs get turned into short hashes with Base62 encoding (original URL --> SHA256 --> Base62). These hashes then form short URLs this app can handle to redirect.
+A small project with simple functions. URLs get turned into short hashes with Base62 encoding (original URL --> SHA256 --> Base62). These hashes then form short URLs this app can handle to redirect. Short URLs are shown in both text and QR-code forms.
 
 ## Installation & usage
 
