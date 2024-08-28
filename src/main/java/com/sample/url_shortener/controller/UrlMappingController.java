@@ -1,7 +1,9 @@
 package com.sample.url_shortener.controller;
 
 import com.sample.url_shortener.dto.SaveRequestDTO;
+import com.sample.url_shortener.dto.SaveResponseDTO;
 import com.sample.url_shortener.service.UrlMappingService;
+import com.sample.url_shortener.util.QRCodeGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +25,7 @@ public class UrlMappingController {
 
 
     @PostMapping("/")
-    public ResponseEntity<String> saveUrl(@RequestBody SaveRequestDTO saveRequestDTO) {
+    public ResponseEntity<Object> saveUrl(@RequestBody SaveRequestDTO saveRequestDTO) {
         if (!isURL(saveRequestDTO.getUrl())) {
             return ResponseEntity.badRequest().body("Invalid URL format");
         }
@@ -35,7 +37,13 @@ public class UrlMappingController {
             return ResponseEntity.badRequest().body("URL too long (1000 characters at max)");
         }
 
-        return ResponseEntity.ok().body(appDomain + "/r/" + urlMappingService.saveUrl(url));
+        String shortenedId = urlMappingService.saveUrl(url);
+        String shortenedUrl = appDomain + "/r/" + shortenedId;
+
+        String qrCodeBase64 = QRCodeGenerator.generateQrCode(shortenedUrl);
+
+        SaveResponseDTO response = new SaveResponseDTO(shortenedUrl, qrCodeBase64);
+        return ResponseEntity.ok().body(response);
     }
 
     
