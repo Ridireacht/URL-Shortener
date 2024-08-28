@@ -13,4 +13,8 @@ public class UrlUtil {
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
     }
+
+    public static boolean doesUrlExist(String url) {
+        return true;
+    }
 }

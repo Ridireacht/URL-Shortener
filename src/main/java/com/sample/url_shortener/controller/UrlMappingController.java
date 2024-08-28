@@ -38,6 +38,10 @@ public class UrlMappingController {
             return ResponseEntity.badRequest().body("URL too long (1000 characters at max)");
         }
 
+        if (!UrlUtil.doesUrlExist(url)) {
+            return ResponseEntity.badRequest().body("URL doesn't exist");
+        }
+
         String shortenedId = urlMappingService.saveUrl(url);
         String shortenedUrl = appDomain + "/r/" + shortenedId;
 
