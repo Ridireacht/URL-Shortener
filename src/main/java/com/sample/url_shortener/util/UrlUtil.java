@@ -1,5 +1,9 @@
 package com.sample.url_shortener.util;
 
+import java.net.InetAddress;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.UnknownHostException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,6 +19,22 @@ public class UrlUtil {
     }
 
     public static boolean doesUrlExist(String url) {
+        URI uri;
+
+        try {
+            uri = new URI(url);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
+        String domain = uri.getHost();
+
+        try {
+            InetAddress.getByName(domain);
+        } catch (UnknownHostException e) {
+            return false;
+        }
+
         return true;
     }
 }
