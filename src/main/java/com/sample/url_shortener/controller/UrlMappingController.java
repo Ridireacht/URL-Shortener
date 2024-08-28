@@ -4,6 +4,7 @@ import com.sample.url_shortener.dto.SaveRequestDTO;
 import com.sample.url_shortener.dto.SaveResponseDTO;
 import com.sample.url_shortener.service.UrlMappingService;
 import com.sample.url_shortener.util.QRCodeGenerator;
+import com.sample.url_shortener.util.UrlUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class UrlMappingController {
 
     @PostMapping("/")
     public ResponseEntity<Object> saveUrl(@RequestBody SaveRequestDTO saveRequestDTO) {
-        if (!isURL(saveRequestDTO.getUrl())) {
+        if (!UrlUtil.isURL(saveRequestDTO.getUrl())) {
             return ResponseEntity.badRequest().body("Invalid URL format");
         }
 
@@ -44,15 +45,5 @@ public class UrlMappingController {
 
         SaveResponseDTO response = new SaveResponseDTO(shortenedUrl, qrCodeBase64);
         return ResponseEntity.ok().body(response);
-    }
-
-    
-    private static boolean isURL(String input) {
-        String URL_REGEX = "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,4}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
-
-        Pattern pattern = Pattern.compile(URL_REGEX);
-
-        Matcher matcher = pattern.matcher(input);
-        return matcher.matches();
     }
 }
