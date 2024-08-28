@@ -15,11 +15,11 @@ public class QRCodeGenerator {
 
     public static String generate(String codeText) {
         QrCode qrCode = QrCode.encodeText(codeText, QrCode.Ecc.MEDIUM);
-        BufferedImage img = toImage(qrCode, 4, 10);
-        return imgToBase64String(img, "png");
+        BufferedImage img = qrCodeToImage(qrCode, 4, 10);
+        return imageToBase64String(img, "png");
     }
 
-    public static BufferedImage toImage(QrCode qr, int scale, int border) {
+    public static BufferedImage qrCodeToImage(QrCode qr, int scale, int border) {
         int lightColor = 0xFFFFFF;
         int darkColor = 0x000000;
 
@@ -49,7 +49,7 @@ public class QRCodeGenerator {
         return result;
     }
 
-    public static String imgToBase64String(final RenderedImage img, final String formatName) {
+    public static String imageToBase64String(final RenderedImage img, final String formatName) {
         final ByteArrayOutputStream os = new ByteArrayOutputStream();
 
         try (final OutputStream b64os = Base64.getEncoder().wrap(os)) {
