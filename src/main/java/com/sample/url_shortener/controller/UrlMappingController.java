@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 @RestController
 @RequiredArgsConstructor
 public class UrlMappingController {
@@ -42,10 +39,11 @@ public class UrlMappingController {
             return ResponseEntity.badRequest().body("URL doesn't exist");
         }
 
+
         String shortenedId = urlMappingService.saveUrl(url);
         String shortenedUrl = appDomain + "/r/" + shortenedId;
 
-        String qrCodeBase64 = QRCodeGenerator.generateQrCode(shortenedUrl);
+        String qrCodeBase64 = QRCodeGenerator.generate(shortenedUrl);
 
         SaveResponseDTO response = new SaveResponseDTO(shortenedUrl, qrCodeBase64);
         return ResponseEntity.ok().body(response);

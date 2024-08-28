@@ -13,7 +13,7 @@ import java.util.Base64;
 
 public class QRCodeGenerator {
 
-    public static String generateQrCode(String codeText) {
+    public static String generate(String codeText) {
         QrCode qrCode = QrCode.encodeText(codeText, QrCode.Ecc.MEDIUM);
         BufferedImage img = toImage(qrCode, 4, 10);
         return imgToBase64String(img, "png");
