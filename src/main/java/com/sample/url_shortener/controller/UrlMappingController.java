@@ -35,8 +35,8 @@ public class UrlMappingController {
             return ResponseEntity.badRequest().body("URL too long (1000 characters at max)");
         }
 
-        if (!UrlUtil.doesUrlExist(url)) {
-            return ResponseEntity.badRequest().body("URL doesn't exist");
+        if (!UrlUtil.doesDomainExist(url)) {
+            return ResponseEntity.badRequest().body("URL's domain doesn't exist");
         }
 
 

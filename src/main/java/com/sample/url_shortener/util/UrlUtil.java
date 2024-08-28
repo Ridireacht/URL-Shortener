@@ -18,7 +18,7 @@ public class UrlUtil {
         return matcher.matches();
     }
 
-    public static boolean doesUrlExist(String url) {
+    public static boolean doesDomainExist(String url) {
         URI uri;
 
         try {
