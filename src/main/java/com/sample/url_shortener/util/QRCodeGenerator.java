@@ -51,7 +51,7 @@ public class QRCodeGenerator {
 
     public static String imgToBase64String(final RenderedImage img, final String formatName) {
         final ByteArrayOutputStream os = new ByteArrayOutputStream();
-        
+
         try (final OutputStream b64os = Base64.getEncoder().wrap(os)) {
             ImageIO.write(img, formatName, b64os);
         } catch (final IOException ioe) {

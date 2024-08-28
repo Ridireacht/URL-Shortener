@@ -2,7 +2,7 @@ package com.sample.url_shortener.util;
 
 import java.security.SecureRandom;
 
-public class RandomStringGenerator {
+public class Base62Generator {
 
     private static final String BASE62_ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final SecureRandom secureRandom = new SecureRandom();
