@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        fetch('/api/', {
+        fetch('http://localhost:8080/api/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
