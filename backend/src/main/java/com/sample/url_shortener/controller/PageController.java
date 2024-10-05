@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Controller
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class PageController {
         if (url != null) {
             return "redirect:" + url;
         } else {
-            return "redirect:error/404";
+            return "redirect:http://localhost/error/404.html";
         }
     }
 }
