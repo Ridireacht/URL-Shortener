@@ -30,6 +30,16 @@ services:
     networks:
       - app-network
 
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
 
 volumes:
   postgres-data:
