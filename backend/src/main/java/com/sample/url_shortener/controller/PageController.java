@@ -13,11 +13,6 @@ public class PageController {
     private final DatabaseLookupService databaseLookupService;
 
 
-    @GetMapping("/")
-    public String getHome() {
-        return "home";
-    }
-
     @GetMapping("/r/{hash}")
     public String getRedirect(@PathVariable String hash) {
         String url = databaseLookupService.findUrlByHash(hash);
@@ -25,7 +20,7 @@ public class PageController {
         if (url != null) {
             return "redirect:" + url;
         } else {
-            return "error/404";
+            return "redirect:error/404";
         }
     }
 }
