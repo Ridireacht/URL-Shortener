@@ -24,7 +24,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/url_shortener
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: password
-      APP_DOMAIN: localhost:80
+      APP_DOMAIN: localhost
     ports:
       - "8080:8080"
     networks:
