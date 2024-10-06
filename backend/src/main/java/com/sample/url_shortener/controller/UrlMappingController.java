@@ -22,7 +22,7 @@ public class UrlMappingController {
     private final UrlMappingService urlMappingService;
 
 
-    @PostMapping("/api/")
+    @PostMapping("/api/url/shorten")
     public ResponseEntity<Object> saveUrl(@RequestBody SaveRequestDTO saveRequestDTO) {
         if (!UrlUtil.isURL(saveRequestDTO.getUrl())) {
             return ResponseEntity.badRequest().body("Invalid URL format");

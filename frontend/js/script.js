@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        fetch('/api', {
+        fetch('/api/url/shorten', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
