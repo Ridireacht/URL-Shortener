@@ -21,7 +21,7 @@ public class PageController {
         if (url != null) {
             return "redirect:" + url;
         } else {
-            return "redirect:http://localhost/error/404.html";
+            return "redirect:/error/404.html";
         }
     }
 }
