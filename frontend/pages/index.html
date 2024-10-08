@@ -10,14 +10,18 @@
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">
 	<div id="alertContainer" class="position-absolute top-0 end-0 m-3"></div>
-    <div class="text-center border p-4 rounded shadow w-25">
-        <input type="text" id="urlInput" class="form-control mb-4 border-2" placeholder="Enter your URL here">
-        <button id="shortenButton" class="btn btn-primary mb-4">Shorten it!</button>
-        <div class="input-group">
-            <input type="text" id="urlOutput" class="form-control border-2" readonly>
-            <button id="copyButton" class="btn btn-warning">💾</button>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-11 col-sm-9 col-md-7 col-lg-5 text-center border p-4 rounded shadow">
+                <input type="text" id="urlInput" class="form-control mb-4 border-2" placeholder="Enter your URL here">
+                <button id="shortenButton" class="btn btn-primary mb-4">Shorten it!</button>
+                <div class="input-group">
+                    <input type="text" id="urlOutput" class="form-control border-2" readonly>
+                    <button id="copyButton" class="btn btn-warning">💾</button>
+                </div>
+                <div id="qrCodeContainer"></div>
+            </div>
         </div>
-        <div id="qrCodeContainer"></div>
     </div>
     <script src="js/script.js"></script>
 </body>
