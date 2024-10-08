@@ -1,4 +1,4 @@
-name: Workflow for Codecov
+name: Backend tests
 on: [push, pull_request]
 jobs:
   run:
@@ -15,10 +15,5 @@ jobs:
       - name: Install dependencies
         run: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -f backend/pom.xml
         
-      - name: Run tests and collect coverage
+      - name: Run tests
         run: mvn -B test -f backend/pom.xml
-        
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
