@@ -31,7 +31,7 @@ public class UrlMappingServiceTests {
     void saveUrl_NewUrl() {
         String url = "https://example.com";
 
-        String hash = urlMappingService.saveUrl(url);
+        String hash = urlMappingService.processUrl(url);
 
         var queryResult = urlMappingRepository.findByUrl(url);
 
@@ -46,6 +46,6 @@ public class UrlMappingServiceTests {
 
         urlMappingRepository.save(new UrlMapping(hash, url));
 
-        assert(urlMappingService.saveUrl(url).equals(hash));
+        assert(urlMappingService.processUrl(url).equals(hash));
     }
 }

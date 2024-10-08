@@ -23,7 +23,7 @@ public class UrlMappingController {
 
 
     @PostMapping("/api/v1/urls")
-    public ResponseEntity<Object> saveUrl(@RequestBody SaveRequestDTO saveRequestDTO) {
+    public ResponseEntity<Object> processUrl(@RequestBody SaveRequestDTO saveRequestDTO) {
         if (!UrlUtil.isURL(saveRequestDTO.getUrl())) {
             return ResponseEntity.badRequest().body("Invalid URL format");
         }
@@ -40,7 +40,7 @@ public class UrlMappingController {
         }
 
 
-        String shortenedId = urlMappingService.saveUrl(url);
+        String shortenedId = urlMappingService.processUrl(url);
         String shortenedUrl = appDomain + "/r/" + shortenedId;
 
         String qrCodeBase64 = QRCodeGenerator.generate(shortenedUrl);

@@ -20,7 +20,7 @@ public class UrlMappingServiceImpl implements UrlMappingService {
 
 
     @Override
-    public String saveUrl(String url) {
+    public String processUrl(String url) {
         log.info("Started processing the following URL: {}", url);
         String hash = databaseLookupService.findHashByUrl(url);
 
@@ -33,7 +33,7 @@ public class UrlMappingServiceImpl implements UrlMappingService {
                 urlMappingRepository.save(new UrlMapping(hash, url));
             } catch (DataIntegrityViolationException e) {
                 log.info("Hash collision occurred for URL \"{}\", retrying...", url);
-                return saveUrl(url);
+                return processUrl(url);
             }
         }
 
