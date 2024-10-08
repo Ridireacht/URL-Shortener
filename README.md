@@ -32,3 +32,4 @@ If there is no need for this app anymore, execute ```docker compose down -v``` t
 
 ### Misc
 - Nginx (frontend's web server)
+- Docker Compose (version **3.9**)
