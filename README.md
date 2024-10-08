@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/1c00d0d13e8a5dec5031/maintainability)](https://codeclimate.com/github/Ridireacht/URL-Shortener/maintainability)
+
 ## General Info
 
 A small project with simple functions. URLs get turned into short hashes with Base62 encoding (original URL --> SHA256 --> Base62). These hashes then form short URLs this app can handle to redirect. Short URLs are shown in both text and QR-code forms.
