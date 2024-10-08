@@ -9,6 +9,10 @@ import java.util.regex.Pattern;
 
 public class UrlUtil {
 
+    private UrlUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static boolean isURL(String input) {
         String URL_REGEX = "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,4}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
 

@@ -4,6 +4,10 @@ import java.security.SecureRandom;
 
 public class RandomStringGenerator {
 
+    private RandomStringGenerator() {
+        throw new IllegalStateException("Utility class");
+    }
+
     private static final String BASE62_ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final SecureRandom secureRandom = new SecureRandom();
 

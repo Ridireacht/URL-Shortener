@@ -13,6 +13,10 @@ import java.util.Base64;
 
 public class QRCodeGenerator {
 
+    private QRCodeGenerator() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String generate(String codeText) {
         QrCode qrCode = QrCode.encodeText(codeText, QrCode.Ecc.MEDIUM);
         BufferedImage img = qrCodeToImage(qrCode, 4, 10);
