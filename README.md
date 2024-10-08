@@ -1,10 +1,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/1c00d0d13e8a5dec5031/maintainability)](https://codeclimate.com/github/Ridireacht/URL-Shortener/maintainability)
 
-## General Info
-
 A small project with simple functions. URLs get turned into short hashes with Base62 encoding (original URL --> SHA256 --> Base62). These hashes then form short URLs this app can handle to redirect. Short URLs are shown in both text and QR-code forms.
 
-## Installation & usage
+# Installation & usage
 
 Clone this repository, enter a directory and execute ```docker compose up``` console command. This will build and setup all Docker containers necessary for this application to run. After that you can start using it: go to the ```localhost:80``` link in your browser, where the main page is located.
 
@@ -12,7 +10,7 @@ In case any changes were applied to the project, execute ```docker compose build
 
 If there is no need for this app anymore, execute ```docker compose down -v``` to remove its containers and volumes.
 
-## Technologies used
+# Technologies used
 
 ### Programming languages
 - Java **17**
